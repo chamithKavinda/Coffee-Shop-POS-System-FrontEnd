@@ -21,6 +21,14 @@ body
 	min-height: 100vh;
 	overflow-x: hidden;
 }
+
+.logo
+{
+    height: 70px;
+    width: 70px;
+    margin-top: 5px;
+}
+
 .container
 {
 	position: relative;
