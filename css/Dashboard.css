@@ -269,7 +269,7 @@ body
 .cardBox .card 
 {
 	position: relative;
-	background: var(--white);
+	background: var(--brown2);
 	padding: 30px;
 	border-radius: 20px;
 	display: flex;
@@ -301,7 +301,7 @@ body
 
 .cardBox .card:hover 
 {
-	background: var(--brown2);
+	background: var(--brown1);
 }
 
 .cardBox .card:hover .numbers,
