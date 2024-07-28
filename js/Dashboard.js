@@ -36,7 +36,7 @@ const barChartOptions = {
         show: false,
       },
     },
-    colors: ['#2962ff', '#d50000', '#2e7d32', '#ff6d00', '#583cb3'],
+    colors: ['#8d99ae', '#ff595e', '#52b788', '#ffbf69', '#a882dd'],
     plotOptions: {
       bar: {
         distributed: true,
@@ -152,7 +152,7 @@ const areaChartOptions = {
       show: false,
     },
   },
-  colors: ['#00ab57', '#d50000'],
+  colors: ['#70798c', '#ffbf69'],
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   dataLabels: {
     enabled: false,
