@@ -33,6 +33,7 @@ body
 	overflow-x: hidden;
 }
 
+/* ----------------- Navigation Bar ----------------- */
 .logo
 {
     height: 70px;
@@ -186,6 +187,7 @@ body
 	left: 80px;
 }
 
+/* ----------------- Dashboard Form ----------------- */
 .topbar 
 {
 	width: 100%;
@@ -347,3 +349,9 @@ body
 	justify-content: center;
 	color: var(--Darkbrown);
   }
+
+  /* ----------------- Customer Form ----------------- */
+  
+#CustomerForm{
+	display: none;
+}
