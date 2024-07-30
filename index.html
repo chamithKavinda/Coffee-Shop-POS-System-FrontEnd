@@ -201,6 +201,46 @@
                     <h2> Products <span>Manage</span></h2>
                     <button id="add-product" class="add-product-button">Add Product</button>
                 </div>
+
+                <!-- -------------- Add Product Form -------------- -->
+                <div id="productRegisterForm" class="productRegisterForm">
+                    <div class="productRegisterForm">
+                        <span id="productRegisterForm-close" class="product-close">&times;</span>
+                        <h2>Add Product</h2>
+                        <img src="/assest/image/productRegisterForm.png">
+
+                        <form id="product-form" class="product-form">
+
+                            <div class="product-image">
+                                <label for="image">Image:</label>
+                                <div class="image-input"></div>
+                                <input type="image" id="input-image" style="display: none;">
+                            </div>
+
+                            <div class="product-form-row">
+                                <input type="text" id="productID" name="productID" placeholder="Product ID" required>
+                            </div>
+
+                            <div class="product-form-row">
+                                <input type="text" id="productName" name="productName" placeholder="Product Name" required>
+                            </div>
+
+                            <div class="product-form-row">
+                                <input type="text" id="price" name="price" placeholder="Price" required>
+                            </div>
+
+                            <div class="product-form-row">
+                                <input type="text" id="category" name="category" placeholder="Category" required>
+                            </div>
+
+                            <div class="product-form-row">
+                                <input type="text" id="quantity" name="quantity" placeholder="Quantity" required>
+                            </div>
+
+                            <button id="product-submit" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </section>
             
 

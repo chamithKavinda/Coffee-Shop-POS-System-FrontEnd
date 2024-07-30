@@ -1,3 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
 #ProductsForm{
     display: none;
+}
+
+.productHeader-section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.productHeader-section h2{
+    margin-left: 40px;
+    font-size: 35px;
+    color: #7f5539;
+}
+
+.productHeader-section h2 span{
+    font-size: 25px;
+    color: #b08968;
+}
+
+.add-product-button{
+    margin-left: 55%;
+    margin-top: 5px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bolder;
+    border-radius: 20px;
+    color: white;
+    background: #b08968;
+    border: 1px solid #b08968;
+    transition: transform 0.3s ease;
+}
+
+.add-product-button:hover{
+    cursor: pointer;
+    background: #f8e7d6;
+    color: #7f5539;
+    transform: scale(1.1);
 }
