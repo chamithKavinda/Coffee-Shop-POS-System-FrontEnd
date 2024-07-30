@@ -151,7 +151,3 @@
     background-color: #f8e7d6;
 }
 
-.blur-background {
-    filter: blur(5px);
-    transition: filter 0.3s ease;
-}
