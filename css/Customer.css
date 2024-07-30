@@ -150,3 +150,8 @@
 .customer-table th{
     background-color: #b08968;
 }
+
+.blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
