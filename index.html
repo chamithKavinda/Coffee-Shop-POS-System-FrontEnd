@@ -144,9 +144,54 @@
                     <button id="add-customer" class="add-customer-button">Add Customer</button>
                 </div>
 
-                  
+                <!-- -------------- Add Customer Form -------------- -->
+                <div id="customerRegisterForm" class="customerRegisterForm">
+                    <div class="registerForm">
+                        <span id="customerRegisterForm-close" class="customer-close"></span>
+                        <h2>Register Customer</h2>
+
+                        <form id="customer-form" class="customer-form">
+                            <div class="customer-form-row">
+                                <input type="text" id="customerID" name="customerID" placeholder="Customer ID" required>
+                            </div>
+
+                            <div class="customer-form-row">
+                                <input type="text" id="customerName" name="customerName" placeholder="Full Name" required>
+                            </div>
+
+                            <div class="customer-form-row">
+                                <input type="text" id="customerAddress" name="customerAddress" placeholder="Address" required>
+                            </div>
+
+                            <div class="customer-form-row">
+                                <input type="text" id="customerNumber" name="customerNumber" placeholder="Mobile Number" required>
+                            </div>
+
+                            <button id="customer-submit" type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- -------------- Customer Table -------------- -->
+                <table class="customer-table"> 
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Contact Number</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="customer-table-list">
+
+                    </tbody>
+                </table>  
             </section>
 
+            <!-- ------------------------------------ Item Form ------------------------------------ -->
             
 
 

@@ -6,8 +6,8 @@
 
 .customerHeader-section{
     display: flex;
-    margin-top: 10px;
     flex-direction: row;
+    margin-top: 10px;
 }
 
 .customerHeader-section h2{
@@ -35,6 +35,10 @@
 
 .add-customer-button:hover{
     cursor: pointer;
-    background: #fff1e4;
+    background: #f8e7d6;
     color: #7f5539;
 }
+
+
+
+
