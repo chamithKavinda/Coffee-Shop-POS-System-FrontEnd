@@ -40,3 +40,92 @@
     color: #7f5539;
     transform: scale(1.1);
 }
+
+/* ------------------ Add Product Form ------------------ */
+
+.productRegisterForm{
+    display: none;
+    position: fixed; 
+}
+
+.productRegisterForm{
+    padding: 10px;
+    margin-top: 40px;
+    margin-left: 200px;
+    border-radius: 15px;
+    height: 420px;
+    width: 600px;
+    background-color: #f8e7d6;
+}
+
+.product-close{
+    margin-left: 550px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #7f5539;
+}
+
+.product-close:hover,
+.product-close:focus{
+    text-decoration: none;
+    cursor: pointer;
+    color: rgb(255, 25, 25);
+}
+
+.productRegisterForm h2{
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #7f5539;
+    text-align: center;
+}
+
+.RegisterForm img{
+    width: 300px;
+    height: 250px;
+    margin-left: -5px;
+    margin-top: 25px;
+}
+
+.product-form{
+    display: flex;
+    flex-direction: column;
+    margin-top: -260px;
+}
+
+.product-form input{
+    margin-left: 310px;
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 10px;
+    color: #7f5539;
+    background-color: white;
+    border: none;
+    font-weight: 500;
+}
+
+.product-form button{
+    width: 90px;
+    height: 28px;  
+    margin-top: 25px;
+    margin-left: 375px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 15px;
+    color: white;
+    background: #b08968;
+    border: 1px solid #b08968;
+    transition: transform 0.3s ease;
+}
+
+.product-form button:hover{
+    cursor: pointer;
+    background: #f8e7d6;
+    color: #7f5539;
+    transform: scale(1.1);
+}
+
+.product-form-row input:focus{
+    outline: 2px solid #b08968;
+}
+

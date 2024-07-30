@@ -105,12 +105,12 @@
 }
 
 .customer-form button{
-    width: 80px;
-    height: 25px;
+    width: 90px;
+    height: 28px;
     margin-top: 25px;
     margin-left: 375px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     border-radius: 15px;
     color: white;
     background: #b08968;
@@ -136,19 +136,19 @@
     border-spacing: 0;
     margin-left: 22px;
     margin-top: 60px;
-    color: #ffffff;
+    color: #7f5539;
 }
 
 .customer-table th,
 .customer-table td{
     padding: 10px;
-    border: 1px solid #7f5539;
+    border: 1px solid #b08968;
     text-align: center;
 
 }
 
 .customer-table th{
-    background-color: #b08968;
+    background-color: #f8e7d6;
 }
 
 .blur-background {

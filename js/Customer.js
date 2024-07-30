@@ -1,5 +1,4 @@
 const customerRegisterForm = document.getElementById("customerRegisterForm");
-const customerForm = document.getElementById("customer-form");
 
 //set up event listener
 const openCustomerRegisterForm = () => {
