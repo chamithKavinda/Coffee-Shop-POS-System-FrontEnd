@@ -42,14 +42,15 @@
 }
 
 .customerRegisterForm{
+    display: none;
     position: fixed;
     /* z-index: 1; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; */
-    /* background-color: #fff1e4; */
+    overflow: auto; 
+    background-color: #fff1e4; */
 }
 
 .registerForm{
@@ -106,10 +107,6 @@
     background-color: white;
     border: none;
     font-weight: 500;
-}
-
-.customer-form input:active{
-    
 }
 
 .customer-form button{
