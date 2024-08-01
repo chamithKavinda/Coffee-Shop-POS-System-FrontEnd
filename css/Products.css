@@ -32,14 +32,12 @@
     color: white;
     background: #b08968;
     border: 1px solid #b08968;
-    transition: transform 0.3s ease;
 }
 
 .add-product-button:hover{
     cursor: pointer;
     background: #f8e7d6;
     color: #7f5539;
-    transform: scale(1.1);
 }
 
 /* ------------------ Add Product Form ------------------ */
@@ -116,14 +114,12 @@
     color: white;
     background: #b08968;
     border: 1px solid #b08968;
-    transition: transform 0.3s ease;
 }
 
 .product-form button:hover{
     cursor: pointer;
     background: #f8e7d6;
     color: #7f5539;
-    transform: scale(1.1);
 }
 
 .product-form-row input:focus{
@@ -143,7 +139,7 @@
 .product-table th,
 .product-table td{
     padding: 10px;
-    border: 1px solid #b08968;
+    /* border: 1px solid #b08968; */
     text-align: center;
 
 }

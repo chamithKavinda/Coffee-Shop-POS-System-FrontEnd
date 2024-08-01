@@ -31,14 +31,12 @@
     color: white;
     background: #b08968;
     border: 1px solid #b08968;
-    transition: transform 0.3s ease;
 }
 
 .add-customer-button:hover{
     cursor: pointer;
     background: #f8e7d6;
     color: #7f5539;
-    transform: scale(1.1);
 }
 
 /* ------------------ customer Register Form ------------------ */
@@ -115,14 +113,12 @@
     color: white;
     background: #b08968;
     border: 1px solid #b08968;
-    transition: transform 0.3s ease;
 }
 
 .customer-form button:hover{
     cursor: pointer;
     background: #f8e7d6;
     color: #7f5539;
-    transform: scale(1.1);
 }
 
 .customer-form-row input:focus{
@@ -142,7 +138,7 @@
 .customer-table th,
 .customer-table td{
     padding: 10px;
-    border: 1px solid #b08968;
+    /* border: 1px solid #b08968; */
     text-align: center;
 
 }
