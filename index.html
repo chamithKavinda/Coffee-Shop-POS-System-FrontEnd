@@ -259,53 +259,58 @@
             
             <!-- ------------------------------------ Order Form ------------------------------------ -->
 
-            <section id="OrdersForm">
-                <div class="OrdersHeader-section">
-                    <h2> Orders <span>Manage</span></h2>
+            <section id="OrdersForm" class="OrdersForm">
+                <h2 class="FormTitle"> Orders <span>Manage</span></h2>
 
-                    <div class="order-items" id="order-items">
-                        <!-- Order items will be injected here by JavaScript -->
-                    </div>
-                </div>
-
-                <div class="cart-section">
-                    <div class="title-orderHeader-contianer">
-                        <h2 class="order-title">Place Order</h2>
-                        <h4 id="current-date" class="date">1 August 2024</h4>
-                    </div>
-
-                    <h3 id="order-id">Order ID: 1</h3>
-                    <div class="customer-select-container">
-                        <select id="customerDropDown" class="customer-select">
-                            <option value="">Select Customer</option>
-                        </select>
-                        <p id="name-holder">Name:</p>
-                    </div>
-
-                    <div class="order-item-cart">
-                        <div class="cart-items" id="cart-items">
+                <div class="OrderFields">
+                    <div class="OrdersHeader-section">
+                        <h2 class="menu">Menu</h2>
+                        <div class="order-items" id="order-items">
                             <!-- Order items will be injected here by JavaScript -->
                         </div>
-                        <div class="order-total">
-                            <p>Sub Total: <span id="sub-total">Rs 0.00</span></p>
-                            <p>Total: <span id="total">Rs 0.00</span></p>
-                            <p>Balance: <span id="balance">Rs 0.00</span></p>
-                        </div> 
-
-                        <div class="order-row">
-                            <div>
-                                <label for="cash">Cash</label>
-                                <input type="text" id="cash">
-                            </div>
-
-                            <div>
-                                <label for="discount">Discount</label>
-                                <input type="text" id="discount">
-                            </div>
+                    </div>
+    
+                    <div class="cart-section">
+                        <div class="title-orderHeader-contianer">
+                            <h2 class="order-title">Place Order</h2>
+                            <h4 id="current-date" class="date">1 August 2024</h4>
                         </div>
-                        <button id="purchase">Purchase</button>
+    
+                        <h3 id="order-id">Order ID: 1</h3>
+                        
+                        <div class="customer-select-container">
+                            <select id="customerDropDown" class="customer-select">
+                                <option value="">Select Customer</option>
+                            </select>
+                            <p id="name-holder">Name:</p>
+                        </div>
+    
+                        <div class="order-item-cart">
+                            <div class="cart-items" id="cart-items">
+                                <!-- Order items will be injected here by JavaScript -->
+                            </div>
+                            <div class="order-total">
+                                <p>Sub Total: <span id="sub-total">Rs 0.00</span></p>
+                                <p>Total: <span id="total">Rs 0.00</span></p>
+                                <p>Balance: <span id="balance">Rs 0.00</span></p>
+                            </div> 
+    
+                            <div class="order-row">
+                                <div>
+                                    <label for="cash">Cash</label>
+                                    <input type="text" id="cash">
+                                </div>
+    
+                                <div>
+                                    <label for="discount">Discount</label>
+                                    <input type="text" id="discount">
+                                </div>
+                            </div>
+                            <button id="purchase">Purchase</button>
+                        </div>
                     </div>
                 </div>
+
             </section>
 
         </div>    
