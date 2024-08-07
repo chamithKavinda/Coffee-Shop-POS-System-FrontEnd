@@ -17,6 +17,11 @@ document
   .getElementById("productRegisterForm-close")
   .addEventListener("click", closeProductRegisterForm);
 
+//Clear the text fields
+document.getElementById("product-submit").addEventListener("click", function(){
+    document.getElementById("productRegisterForm").style.display = "none";
+});
+
 //submit btn implementation
 document.getElementById("productRegisterForm").addEventListener("submit",(event) =>{
     event.preventDefault();
@@ -35,11 +40,8 @@ document.getElementById("productRegisterForm").addEventListener("submit",(event)
         quantity:quantity,
     };
 
-
-
     //create JSON
     const productJSON = JSON.stringify(productRegisterForm)
- 
 
     //Introduce AJAX - Native
     const http = new XMLHttpRequest()

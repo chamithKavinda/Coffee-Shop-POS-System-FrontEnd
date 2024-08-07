@@ -19,7 +19,7 @@ document
 
 //Clear the text fields
 document.getElementById("customer-submit").addEventListener("click", function(){
-    document.getElementById("customer-form").style.display = "none";
+    document.getElementById("customerRegisterForm").style.display = "none";
 });
 
 //submit btn implementation
