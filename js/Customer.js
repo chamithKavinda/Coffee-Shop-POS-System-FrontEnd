@@ -62,7 +62,7 @@ $(document).ready(function() {
             fillFormCustomerData(customer);
             isUpdateMode = true;
             currentCustomerContact = customer.custContact;
-            $customerButton.text("Update Customer");
+            $customerButton.text("Update");
         });
         $updateCell.append($updateButton);
         $row.append($updateCell);
@@ -166,6 +166,8 @@ $(document).ready(function() {
             alert("Error saving customer data");
         }
     });
+
+    loadCustomersIntoTable();
 });
 
 
