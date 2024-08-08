@@ -1,66 +1,171 @@
-const customerRegisterForm = document.getElementById("customerRegisterForm");
+$(document).ready(function() {
+    const $customerRegisterForm = $("#customerRegisterForm");
+    const $customerForm = $("#customer-form");
+    const $customerButton = $("#customer-submit");
+    const $customerTableList = $("#customer-table-list");
+    let isUpdateMode = false;
+    let currentCustomerContact = null;
 
-//set up event listener
-const openCustomerRegisterForm = () => {
-    customerRegisterForm.style.display = "block";
-}
-
-const closeCustomerRegisterForm = () => {
-    customerRegisterForm.style.display = "none";
-}
-
-document
-  .getElementById("add-customer")
-  .addEventListener("click", openCustomerRegisterForm);
-
-document
-  .getElementById("customerRegisterForm-close")
-  .addEventListener("click", closeCustomerRegisterForm);
-
-//Clear the text fields
-document.getElementById("customer-submit").addEventListener("click", function(){
-    document.getElementById("customerRegisterForm").style.display = "none";
-});
-
-//submit btn implementation
-document.getElementById("customerRegisterForm").addEventListener("submit",(event) =>{
-    event.preventDefault();
-
-    const id = document.getElementById("customerID").value;
-    const name = document.getElementById("customerName").value;
-    const address = document.getElementById("customerAddress").value;
-    const contact = document.getElementById("customerNumber").value;
-
-    const customerRegisterForm = {
-        custId:id,
-        custName: name,
-        custAddress: address,
-        custContact: contact,
+    const openCustomerRegisterForm = () => {
+        $customerRegisterForm.show();
     };
 
-    // console.log(customerRegisterForm);
+    const closeCustomerRegisterForm = () => {
+        $customerRegisterForm.hide();
+        $customerForm[0].reset();
+        $customerButton.text("Add Customer");
+        isUpdateMode = false;
+        currentCustomerContact = null;
+    };
 
-    //create JSON
-    const customerJSON = JSON.stringify(customerRegisterForm)
-    // console.log(customerJSON)
+    $("#add-customer").on("click", openCustomerRegisterForm);
+    $("#customerRegisterForm-close").on("click", closeCustomerRegisterForm);
 
-    //Introduce AJAX - Native
-    const http = new XMLHttpRequest()
+    $("#customer-submit").on("click", function() {
+        $customerRegisterForm.hide();
+    });
 
-    http.onreadystatechange = ()=>{
-            if(http.status == 200){
-                var responseTextJSON = JSON.stringify(http.responseText)
-                console.log(responseTextJSON)
-            }else{
-                console.error("Failed");
-                console.error("Status" + http.status)
-                console.error("Ready Status"+http.readyState)
-            }    
-    }
+    const loadCustomersIntoTable = async () => {
+        await loadCustomersDataFromBackend();
+        $customerTableList.empty();
+        customerDataList.forEach((customer) => {
+            addCustomerDataToTable(customer, $customerTableList);
+        });
+    };
 
-    http.open("POST","http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/customer",true)
+    const loadCustomersDataFromBackend = async () => {
+        try {
+            const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/customer");
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            customerDataList = data;
+        } catch (error) {
+            console.error("Error fetching customers:", error);
+        }
+    };
 
-    http.setRequestHeader("Content-Type","application/json")
-    http.send(customerJSON)
-    console.log(customerJSON)
+    const addCustomerDataToTable = (customer, table) => {
+        const $row = $("<tr>");
+        const nameList = ["custId", "custName", "custAddress", "custContact"];
+
+        nameList.forEach((key) => {
+            const $cell = $("<td>").text(customer[key]);
+            $row.append($cell);
+        });
+
+        const $updateCell = $("<td>");
+        const $updateButton = $("<button>").text("Update").addClass("action-button");
+        $updateButton.on("click", () => {
+            openCustomerRegisterForm();
+            fillFormCustomerData(customer);
+            isUpdateMode = true;
+            currentCustomerContact = customer.custContact;
+            $customerButton.text("Update Customer");
+        });
+        $updateCell.append($updateButton);
+        $row.append($updateCell);
+
+        const $removeCell = $("<td>");
+        const $removeButton = $("<button>").text("Remove").addClass("action-button");
+        $removeButton.on("click", async () => {
+            console.log(`Remove customer ${customer.custContact}`);
+            try {
+                const response = await fetch(`http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/customer?contact=${customer.custContact}`, {
+                    method: "DELETE",
+                });
+
+                if (response.ok) {
+                    $row.remove();
+                    customerDataList = customerDataList.filter((c) => c.custContact !== customer.custContact);
+                } else {
+                    const errorText = await response.text();
+                    console.error("Error removing customer:", errorText);
+                }
+            } catch (error) {
+                console.error("Error removing customer:", error);
+            }
+        });
+        $removeCell.append($removeButton);
+        $row.append($removeCell);
+        table.append($row);
+    };
+
+    const fillFormCustomerData = (customer) => {
+        $("#customerID").val(customer.custId);
+        $("#customerName").val(customer.custName);
+        $("#customerAddress").val(customer.custAddress);
+        $("#customerNumber").val(customer.custContact);
+    };
+
+    const validatecustId = (custId) => /^C\d{3}$/.test(custId);
+    const validatecustName = (custName) => /^[a-zA-Z\s]+$/.test(custName);
+    const validatecustAddress = (custAddress) => custAddress.trim() !== "";
+    const validatecustContact = (custContact) => /^[0-9]{10}$/.test(custContact);
+
+    $customerForm.on("submit", async (event) => {
+        event.preventDefault();
+
+        const custId = $("#customerID").val();
+        const custName = $("#customerName").val();
+        const custAddress = $("#customerAddress").val();
+        const custContact = $("#customerNumber").val();
+
+        if (!validatecustId(custId)) {
+            alert("Customer ID Format 'C000'");
+            return;
+        }
+        if (!validatecustName(custName)) {
+            alert("Name must contain only letters");
+            return;
+        }
+        if (!validatecustAddress(custAddress)) {
+            alert("Address cannot be empty");
+            return;
+        }
+        if (!validatecustContact(custContact)) {
+            alert("Contact must be 10 digits numbers");
+            return;
+        }
+
+        const customerData = {
+            custId,
+            custName,
+            custAddress,
+            custContact,
+        };
+
+        try {
+            let url = "http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/customer";
+            let method = isUpdateMode ? "PUT" : "POST";
+            let successMessage = isUpdateMode ? "Customer Updated Successfully" : "Customer Added Successfully";
+
+            if (isUpdateMode) {
+                url += `?custContact=${currentCustomerContact}`;
+            }
+
+            const response = await fetch(url, {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(customerData),
+            });
+
+            if (response.ok) {
+                alert(successMessage);
+                await loadCustomersIntoTable();
+                closeCustomerRegisterForm();
+            } else {
+                const errorText = await response.text();
+                alert(`Failed! Try again: ${errorText}`);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error saving customer data");
+        }
+    });
 });
+
+
