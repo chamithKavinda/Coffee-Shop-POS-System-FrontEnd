@@ -3,18 +3,20 @@ $(document).ready(function() {
     const $productTableList = $("#product-table-list");
     const $productForm = $("#product-form");
     const $productButton = $("#product-submit");
+    const $title = $("#title");
     let isProductUpdateMode = false;
     let currentProductId = null;
 
     // Set up event listener
     const openProductRegisterForm = () => {
         $productRegisterForm.show();
+        $title.text("Register Product");
     };
 
     const closeProductRegisterForm = () => {
         $productRegisterForm.hide();
         $productForm[0].reset();
-        $productButton.text("Add Product");
+        $productButton.text("Submit");
         isProductUpdateMode = false;
         currentProductId = null;
     };
@@ -64,9 +66,10 @@ $(document).ready(function() {
         $updateButton.on("click", () => {
             openProductRegisterForm();
             fillFormWithProductData(product);
+            $title.text("Update Product");
             isProductUpdateMode = true;
             currentProductId = product.pro_id;
-            $productButton.text("Update Product");
+            $productButton.text("Update");
         });
         $updateCell.append($updateButton);
         $row.append($updateCell);

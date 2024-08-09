@@ -25,4 +25,19 @@ document.getElementById("OrdersForm-button").addEventListener("click", function 
   document.getElementById("ProductsForm").style.display = "none";
   document.getElementById("OrdersForm").style.display = "block";
 });
+
+document.getElementById("customer").addEventListener("click", function (){
+    document.getElementById("DashboardForm").style.display = "none";
+    document.getElementById("CustomerForm").style.display = "block";
+});
+
+document.getElementById("product").addEventListener("click", function (){
+    document.getElementById("DashboardForm").style.display = "none";
+    document.getElementById("ProductsForm").style.display = "block";
+});
+
+document.getElementById("orders").addEventListener("click", function (){
+    document.getElementById("DashboardForm").style.display = "none";
+    document.getElementById("OrdersForm").style.display = "block";
+});
   

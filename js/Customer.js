@@ -3,17 +3,19 @@ $(document).ready(function() {
     const $customerForm = $("#customer-form");
     const $customerButton = $("#customer-submit");
     const $customerTableList = $("#customer-table-list");
+    const $registerTitle = $("#registerTitle");
     let isUpdateMode = false;
     let currentCustomerContact = null;
 
     const openCustomerRegisterForm = () => {
         $customerRegisterForm.show();
+        $registerTitle.text("Register Customer");
     };
 
     const closeCustomerRegisterForm = () => {
         $customerRegisterForm.hide();
         $customerForm[0].reset();
-        $customerButton.text("Add Customer");
+        $customerButton.text("Submit");
         isUpdateMode = false;
         currentCustomerContact = null;
     };
@@ -60,6 +62,7 @@ $(document).ready(function() {
         $updateButton.on("click", () => {
             openCustomerRegisterForm();
             fillFormCustomerData(customer);
+            $registerTitle.text("Update Customer");
             isUpdateMode = true;
             currentCustomerContact = customer.custContact;
             $customerButton.text("Update");
