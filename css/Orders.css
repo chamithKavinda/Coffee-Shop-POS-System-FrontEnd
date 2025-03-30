@@ -43,7 +43,7 @@
     margin-top: 20px;
     margin-left:62px;
     height: 200px;
-    width: 350px;
+    width: 450px;
     padding: 20px;
     border-radius: 20px;
     /* background-color: #f8e7d6; */
@@ -101,7 +101,7 @@
     right: 20px;
     top: 20px;
     width: 360px;
-    margin-left: -20px;
+    margin-left: -5px;
     margin-top: 20px;
     padding: 20px;
     border-radius: 20px;
@@ -162,7 +162,7 @@
 
 .order-row input{
     width: 10rem;
-    height: 22px;
+    height: 30px;
     margin-top: 5px;
     font-weight: 400wdqdq;
     font-style: normal;
@@ -192,7 +192,7 @@
 
 #purchase{
     width: 10rem;
-    height: 26px;
+    height: 35px;
     margin-top: 20px;
     margin-left: 80px;
     width: 50%;

@@ -12,8 +12,7 @@
 
 </head>
 <body>
-    
-    <div class="container">
+    <div id="container" class="container">
         <!-- ------------------------------------ Navgation Side Bar ------------------------------------ -->
         <div id="navigation" class="navigation">
             <ul>
@@ -60,7 +59,7 @@
 					</a>
 				</li>
                 <li>
-					<a href="#">
+					<a href="#" id="SignOutForm-button">
 						<span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
 						<span class="title">Sign Out</span>
 					</a>
@@ -258,7 +257,6 @@
             </section>
             
             <!-- ------------------------------------ Order Form ------------------------------------ -->
-
             <section id="OrdersForm" class="OrdersForm">
                 <h2 class="FormTitle"> Orders <span>Manage</span></h2>
 
@@ -282,7 +280,7 @@
                             <select id="customerDropDown" class="customer-select">
                                 <option value="">Select Customer</option>
                             </select>
-                            <p id="name-holder">Name:</p>
+                            <!-- <p id="name-holder">Name:</p> -->
                         </div>
     
                         <div class="order-item-cart">
@@ -312,6 +310,8 @@
                 </div>
 
             </section>
+
+            <div id="toast" class="toast"></div>
 
 
         </div>    

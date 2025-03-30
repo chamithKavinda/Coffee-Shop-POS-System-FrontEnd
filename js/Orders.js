@@ -263,7 +263,7 @@ dateElement.textContent = formatDate;
 async function popCustomerDropdown(){
     //Getting data form Backend
     try{
-        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/customer");
+        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/customer");
         if(!response.ok){
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -294,7 +294,7 @@ async function popCustomerDropdown(){
 //Load Items
 async function popOrderItems(){
     try{
-        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/product");
+        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/product");
         if(!response.ok){
             throw new Error(`HTTP error! status : ${response.status}`);
         }
@@ -347,7 +347,7 @@ async function popOrderItems(){
 
 async function loadOrderId() {
     try{
-        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/orders");
+        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/orders");
     
         if(!response.ok){
             throw new Error(`HTTP error1 status: ${response.status}`);
@@ -512,7 +512,7 @@ async function purchase(){
     };
 
     try{
-        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/orders",{
+        const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/orders",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

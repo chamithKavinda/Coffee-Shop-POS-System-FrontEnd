@@ -7,6 +7,18 @@ $(document).ready(function() {
     let isProductUpdateMode = false;
     let currentProductId = null;
 
+    // Toast notification function
+    const showToast = (message, type = "success") => {
+        const $toast = $("#toast");
+        $toast.removeClass("success error");
+        $toast.addClass(type);
+        $toast.text(message);
+        $toast.addClass("show");
+        setTimeout(() => {
+            $toast.removeClass("show");
+        }, 3000);
+    };
+
     // Set up event listener
     const openProductRegisterForm = () => {
         $productRegisterForm.show();
@@ -24,31 +36,25 @@ $(document).ready(function() {
     $("#add-product").on("click", openProductRegisterForm);
     $("#productRegisterForm-close").on("click", closeProductRegisterForm);
 
-    // Clear the text fields
-    $("#product-submit").on("click", function() {
-        $productRegisterForm.hide();
-    });
-
     // Load items
     const LoadProductsIntoTable = async () => {
         await loadProductsFromBackend();
         $productTableList.empty();
         productDataList.forEach((product) => {
-            console.log(product);
             addProductToTable(product, $productTableList);
         });
     };
 
     const loadProductsFromBackend = async () => {
         try {
-            const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/product");
+            const response = await fetch("http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/product");
             if (!response.ok) {
                 throw new Error(`HTTP error! : ${response.status}`);
             }
             const data = await response.json();
             productDataList = data;
         } catch (error) {
-            console.error("Error fetching products: ", error);
+            showToast("Error fetching products", "error");
         }
     };
 
@@ -78,20 +84,22 @@ $(document).ready(function() {
         const $removeCell = $("<td>");
         const $removeButton = $("<button>").text("Remove").addClass("action-button");
         $removeButton.on("click", async () => {
-            console.log(`Remove product ${product.pro_id}`);
-            try {
-                const response = await fetch(`http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/product?pro_id=${product.pro_id}`, {
-                    method: "DELETE",
-                });
-                if (response.ok) {
-                    $row.remove();
-                    productDataList = productDataList.filter((p) => p.pro_id !== product.pro_id);
-                } else {
-                    const errorText = await response.text();
-                    console.error("Error removing product: ", errorText);
+            if (confirm(`Are you sure you want to remove product ${product.pro_id}?`)) {
+                try {
+                    const response = await fetch(`http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/product?pro_id=${product.pro_id}`, {
+                        method: "DELETE",
+                    });
+                    if (response.ok) {
+                        $row.remove();
+                        productDataList = productDataList.filter((p) => p.pro_id !== product.pro_id);
+                        showToast("Product Deleted Successfully", "success");
+                    } else {
+                        const errorText = await response.text();
+                        showToast(`Error removing product: ${errorText}`, "error");
+                    }
+                } catch (error) {
+                    showToast("Error removing product", "error");
                 }
-            } catch (error) {
-                console.error("Error removing product:", error);
             }
         });
         $removeCell.append($removeButton);
@@ -129,23 +137,23 @@ $(document).ready(function() {
 
         // Validate data
         if (!validateProID(pro_id)) {
-            alert("Item ID must be in 'P000' format");
+            showToast("Item ID must be in 'P000' format", "error");
             return;
         }
         if (!validateProName(pro_name)) {
-            alert("Name must contain only letters");
+            showToast("Name must contain only letters", "error");
             return;
         }
         if (!validatePrice(price)) {
-            alert("Price must be a valid positive number");
+            showToast("Price must be a valid positive number", "error");
             return;
         }
         if (!validateCategory(category)) {
-            alert("Category cannot be empty");
+            showToast("Category cannot be empty", "error");
             return;
         }
         if (!validateQuantity(quantity)) {
-            alert("Quantity must be a positive number");
+            showToast("Quantity must be a positive number", "error");
             return;
         }
 
@@ -158,7 +166,7 @@ $(document).ready(function() {
         };
 
         try {
-            let url = "http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war_exploded/product";
+            let url = "http://localhost:8080/Coffee_Shop_POS_JavaEE_Backend_war/product";
             let method = isProductUpdateMode ? "PUT" : "POST";
             let successMessage = isProductUpdateMode ? "Product Updated Successfully" : "Product Added Successfully";
 
@@ -175,16 +183,15 @@ $(document).ready(function() {
             });
 
             if (response.ok) {
-                alert(successMessage);
+                showToast(successMessage, "success");
                 await LoadProductsIntoTable();
                 closeProductRegisterForm();
             } else {
                 const errorText = await response.text();
-                alert(`Process failed: ${errorText}`);
+                showToast(`Process failed: ${errorText}`, "error");
             }
         } catch (error) {
-            console.error("Error:", error);
-            alert("Error processing product data");
+            showToast("Error processing product data", "error");
         }
     });
 
